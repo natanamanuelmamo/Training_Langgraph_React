@@ -1,0 +1,95 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "logtriage"
+version = "0.1.0"
+description = "Log-Triage Agent — the ReAct loop built two ways: raw Python and LangGraph."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+dependencies = [
+    "anthropic>=0.40",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+# Part 2 only. Part 1 must run without these installed (Rule R1).
+graph = [
+    "langgraph>=0.2.28",
+    "langchain-core>=0.3",
+]
+# Non-Anthropic LLM backends (see CLAUDE.md §7 and R14). Optional so the lean install
+# stays anthropic-only; every provider class lazy-imports its SDK, so nothing here is
+# needed unless you actually select that provider. NOT langchain-google-genai for Gemini
+# — it pulls in langchain_core, which R1 bans.
+providers = [
+    "openai>=1.40",
+    "groq>=0.11",
+    "google-genai>=0.3",
+]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "mypy>=1.11",
+]
+
+[project.scripts]
+react-scratch = "react_from_scratch.cli:main"
+react-graph = "react_langgraph.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "src/triage_core",
+    "src/react_from_scratch",
+    "src/react_langgraph",
+]
+
+# ---------------------------------------------------------------------------
+# Lint / format — Rule R12
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "D", "SIM", "RUF"]
+ignore = [
+    "D107",  # __init__ docstring — covered by the class docstring
+    "D203",  # incompatible with D211
+    "D213",  # incompatible with D212
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D100", "D101", "D102", "D103", "D104"]
+
+# ---------------------------------------------------------------------------
+# Types — Rule R5
+# ---------------------------------------------------------------------------
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unreachable = true
+disallow_any_generics = true
+mypy_path = "src"
+packages = ["triage_core", "react_from_scratch"]
+
+[[tool.mypy.overrides]]
+module = ["anthropic.*", "openai.*", "groq.*", "google.*"]
+ignore_missing_imports = true
+
+# ---------------------------------------------------------------------------
+# Tests — Rule R9
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers -q"
+markers = [
+    "graph: tests that require the optional langgraph dependency (Part 2)",
+]

@@ -1,0 +1,1 @@
+2026-08-29T03:14:07Z ERROR payments-api  Connection pool exhausted after 30s (db=orders-primary, active=100/100, waiting=482)

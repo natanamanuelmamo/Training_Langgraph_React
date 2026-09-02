@@ -1,0 +1,1 @@
+2026-08-30T01:20:44Z ERROR log-shipper  Write failed: no space left on device (mount=/var/log, used=100%)

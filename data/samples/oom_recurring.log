@@ -1,0 +1,1 @@
+2026-08-29T04:41:55Z ERROR recommendation-worker  Container killed: out of memory (limit=4Gi, rss=4.1Gi, pod=rec-worker-7c9f)

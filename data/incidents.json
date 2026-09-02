@@ -1,0 +1,128 @@
+[
+  {
+    "incident_id": "INC-2291",
+    "signature": "db.pool.exhausted:orders-primary",
+    "severity": "critical",
+    "opened_at": "2026-07-14",
+    "resolved": true,
+    "resolution": "raised pool size from 100 to 200",
+    "occurrences": 1
+  },
+  {
+    "incident_id": "INC-2410",
+    "signature": "db.pool.exhausted:orders-primary",
+    "severity": "critical",
+    "opened_at": "2026-08-02",
+    "resolved": true,
+    "resolution": "killed a long-running nightly report query",
+    "occurrences": 1
+  },
+  {
+    "incident_id": "INC-2350",
+    "signature": "oom.killed:recommendation-worker",
+    "severity": "critical",
+    "opened_at": "2026-07-01",
+    "resolved": true,
+    "resolution": "raised the container memory limit to 4Gi",
+    "occurrences": 1
+  },
+  {
+    "incident_id": "INC-2372",
+    "signature": "oom.killed:recommendation-worker",
+    "severity": "critical",
+    "opened_at": "2026-07-19",
+    "resolved": true,
+    "resolution": "capped the embedding batch size at 512",
+    "occurrences": 1
+  },
+  {
+    "incident_id": "INC-2401",
+    "signature": "oom.killed:recommendation-worker",
+    "severity": "critical",
+    "opened_at": "2026-08-05",
+    "resolved": false,
+    "resolution": null,
+    "occurrences": 1
+  },
+  {
+    "incident_id": "INC-2455",
+    "signature": "oom.killed:recommendation-worker",
+    "severity": "critical",
+    "opened_at": "2026-08-21",
+    "resolved": false,
+    "resolution": null,
+    "occurrences": 2
+  },
+  {
+    "incident_id": "INC-2210",
+    "signature": "disk.full:log-shipper",
+    "severity": "critical",
+    "opened_at": "2026-08-11",
+    "resolved": false,
+    "resolution": null,
+    "occurrences": 1
+  },
+  {
+    "incident_id": "INC-2288",
+    "signature": "net.timeout:search-api",
+    "severity": "warning",
+    "opened_at": "2026-07-09",
+    "resolved": true,
+    "resolution": "raised the upstream read timeout to 5s",
+    "occurrences": 2
+  },
+  {
+    "incident_id": "INC-2299",
+    "signature": "net.timeout:search-api",
+    "severity": "warning",
+    "opened_at": "2026-07-28",
+    "resolved": true,
+    "resolution": "added a circuit breaker on the suggest endpoint",
+    "occurrences": 1
+  },
+  {
+    "incident_id": "INC-2333",
+    "signature": "svc.degraded:notification-worker",
+    "severity": "warning",
+    "opened_at": "2026-08-08",
+    "resolved": true,
+    "resolution": "drained and restarted the stuck consumer group",
+    "occurrences": 1
+  },
+  {
+    "incident_id": "INC-2150",
+    "signature": "cfg.deprecated:auth-gateway",
+    "severity": "info",
+    "opened_at": "2026-08-18",
+    "resolved": true,
+    "resolution": "scheduled the config migration for the next release",
+    "occurrences": 1
+  },
+  {
+    "incident_id": "INC-2151",
+    "signature": "cfg.deprecated:auth-gateway",
+    "severity": "info",
+    "opened_at": "2026-08-25",
+    "resolved": true,
+    "resolution": "no action; the flag is removed in v4.2",
+    "occurrences": 1
+  },
+  {
+    "incident_id": "INC-1904",
+    "signature": "db.pool.exhausted:orders-primary",
+    "severity": "critical",
+    "opened_at": "2026-01-12",
+    "resolved": true,
+    "resolution": "OUTSIDE THE 90-DAY LOOKBACK — must be filtered out by lookup_incidents",
+    "occurrences": 4
+  },
+  {
+    "incident_id": "INC-2477",
+    "signature": "cache.warm:catalog-api",
+    "severity": "info",
+    "opened_at": "2026-08-27",
+    "resolved": true,
+    "resolution": "expected at deploy time",
+    "occurrences": 3
+  }
+]
