@@ -1,7 +1,7 @@
 # Log-Triage Agent — ReAct, built two ways
 
 Training deliverable for **"Agentic Task Design with LangGraph — ReAct & ReWOO Prompting
-Patterns"** (Trainer: Kewser Seid, iCog Labs).
+Patterns"**.
 
 One multi-step problem, solved twice: once as a **hand-written ReAct loop in raw Python**, once
 as a **LangGraph graph** with caching and a human-in-the-loop checkpoint. The point is to show
